@@ -1,0 +1,29 @@
+language: objective-c
+
+notifications:
+  email:
+    on_success: never
+    on_failure: change
+
+sudo: required
+
+os:
+  - linux
+  - osx
+
+language: go
+
+go:
+  - 1.5.1
+  - tip
+
+env:
+  - APM_TEST_PACKAGES="environment go-config"
+
+script:
+  - pushd $TRAVIS_BUILD_DIR
+  - export DISPLAY=":99"
+  - ./build-package.sh
+
+git:
+  depth: 10
