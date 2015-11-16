@@ -25,7 +25,7 @@
     "aligncheck"
   ],
   "main": "./lib/main",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "repository": "https://github.com/joefitzgerald/gometalinter-linter",
   "license": "Apache-2.0",
   "engines": {
@@ -36,8 +36,7 @@
   "bugs": {
     "url": "https://github.com/joefitzgerald/gometalinter-linter/issues"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "eslint": "^1.5.0",
     "babel-eslint": "^4.1.3",
