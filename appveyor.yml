@@ -15,9 +15,9 @@ install:
   - 7z x go%GOVERSION%.windows-amd64.zip -y -oC:\ > NUL
   - go version
   - go env
+  - mkdir c:\gopath
   - go get -u github.com/alecthomas/gometalinter
   - gometalinter --install --update
-  - mkdir c:\gopath
 
 build_script:
   - cd %APPVEYOR_BUILD_FOLDER%
