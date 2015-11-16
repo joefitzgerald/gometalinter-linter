@@ -1,4 +1,4 @@
-# `gometalinter-linter` [![Build Status](https://travis-ci.org/joefitzgerald/gometalinter-linter.svg)](https://travis-ci.org/joefitzgerald/gometalinter-linter) [![Build status](https://ci.appveyor.com/api/projects/status/todoupdateme?svg=true)](https://ci.appveyor.com/project/joefitzgerald/gometalinter-linter)
+# `gometalinter-linter` For Atom [![Build Status](https://travis-ci.org/joefitzgerald/gometalinter-linter.svg)](https://travis-ci.org/joefitzgerald/gometalinter-linter) [![Build status](https://ci.appveyor.com/api/projects/status/u94yqsase23bydtb?svg=true)](https://ci.appveyor.com/project/joefitzgerald/gometalinter-linter)
 
 > **[gometalinter](https://github.com/alecthomas/gometalinter)**
 >
