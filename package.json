@@ -56,11 +56,6 @@
       "versions": {
         "1.0.0": "provide"
       }
-    },
-    "status-bar": {
-      "versions": {
-        "^1.0.0": "consumeStatusBar"
-      }
     }
   }
 }

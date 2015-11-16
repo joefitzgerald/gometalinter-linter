@@ -1,7 +1,9 @@
 #!/bin/bash
+set -x
 
 echo "Downloading latest Atom release..."
-[ "$TRAVIS_OS_NAME" == "osx" ] && ATOM_DOWNLOAD_URL=https://atom.io/download/mac?channel=beta || ATOM_DOWNLOAD_URL=https://atom.io/download/deb?channel=beta
+CI_CHANNEL="${ATOM_CHANNEL:=stable}"
+[ "$TRAVIS_OS_NAME" == "osx" ] && ATOM_DOWNLOAD_URL="https://atom.io/download/mac?channel=$CI_CHANNEL" || ATOM_DOWNLOAD_URL="https://atom.io/download/deb?channel=$CI_CHANNEL"
 [ "$TRAVIS_OS_NAME" == "osx" ] && ATOM_DOWNLOAD_FILE=atom.zip || ATOM_DOWNLOAD_FILE=atom.deb
 
 curl -s -L "$ATOM_DOWNLOAD_URL" \
@@ -12,10 +14,21 @@ if [ "$TRAVIS_OS_NAME" == "osx" ]
 then
     mkdir atom
     unzip -q atom.zip -d atom
-    export PATH=$PWD/atom/Atom.app/Contents/Resources/app/apm/bin:$PATH
-    export ATOM_PATH=./atom
-    export ATOM_SH=./atom/Atom.app/Contents/Resources/app/atom.sh
-    export APM_SH=./atom/Atom.app/Contents/Resources/app/apm/node_modules/.bin/apm
+    if [ "$CI_CHANNEL" == "stable" ]
+    then
+      export CI_ATOM_APPNAME="Atom.app"
+      export CI_ATOM_SCRIPTNAME="atom.sh"
+      export CI_ATOM_SH="./atom/${CI_ATOM_APPNAME}/Contents/Resources/app/atom.sh"
+    else
+      export CI_CHANNEL_CAMELCASE="$(tr '[:lower:]' '[:upper:]' <<< ${CI_CHANNEL:0:1})${CI_CHANNEL:1}"
+      export CI_ATOM_APPNAME="Atom ${CI_CHANNEL_CAMELCASE}.app"
+      export CI_ATOM_SCRIPTNAME="atom-${CI_CHANNEL}"
+      export CI_ATOM_SH="./atom-${CI_CHANNEL}"
+      ln -s "./atom/${CI_ATOM_APPNAME}/Contents/Resources/app/atom.sh" "${CI_ATOM_SH}"
+    fi
+    export PATH="$PWD/atom/${CI_ATOM_APPNAME}/Contents/Resources/app/apm/bin:$PATH"
+    export ATOM_PATH="./atom"
+    export CI_APM_SH="./atom/${CI_ATOM_APPNAME}/Contents/Resources/app/apm/node_modules/.bin/apm"
 else
     /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
     sudo apt-get update -qq
@@ -38,24 +51,34 @@ else
     sudo apt-get install gdebi-core -qq
     sudo apt-get update -qq
     sudo gdebi -n atom.deb
-    export ATOM_SH="/usr/bin/atom"
-    export APM_SH="/usr/bin/apm"
+    if [ "$CI_CHANNEL" == "stable" ]
+    then
+      export CI_ATOM_SCRIPTNAME="atom"
+      export CI_APM_SCRIPTNAME="apm"
+    else
+      export CI_ATOM_SCRIPTNAME="atom-$CI_CHANNEL"
+      export CI_APM_SCRIPTNAME="apm-$CI_CHANNEL"
+    fi
+    export CI_ATOM_SH="/usr/bin/$CI_ATOM_SCRIPTNAME"
+    export CI_APM_SH="/usr/bin/$CI_APM_SCRIPTNAME"
 fi
 
 
 echo "Using Atom version:"
-/bin/bash "$ATOM_SH" -v
+/bin/bash "$CI_ATOM_SH" -v
+echo "Using APM version:"
+/bin/bash "$CI_APM_SH" -v
 
 echo "Downloading package dependencies..."
-/bin/bash "$APM_SH" clean
-/bin/bash "$APM_SH" install
+/bin/bash "$CI_APM_SH" clean
+/bin/bash "$CI_APM_SH" install
 
 TEST_PACKAGES="${APM_TEST_PACKAGES:=none}"
 
 if [ "$TEST_PACKAGES" != "none" ]; then
   echo "Installing atom package dependencies..."
   for pack in $TEST_PACKAGES ; do
-    /bin/bash "$APM_SH" install $pack
+    /bin/bash "$CI_APM_SH" install $pack
   done
 fi
 
@@ -99,10 +122,5 @@ if [ -f ./node_modules/.bin/standard ]; then
 fi
 
 echo "Running specs..."
-if [ "$TRAVIS_OS_NAME" == "osx" ]
-then
-    /bin/bash "$APM_SH" test --path "$ATOM_SH"
-else
-    apm test
-fi
+/bin/bash "$CI_ATOM_SH" --test spec
 exit
