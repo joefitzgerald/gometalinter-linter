@@ -1,4 +1,4 @@
-# `gometalinter-linter` For Atom [![Build Status](https://travis-ci.org/joefitzgerald/gometalinter-linter.svg)](https://travis-ci.org/joefitzgerald/gometalinter-linter) [![Build status](https://ci.appveyor.com/api/projects/status/u94yqsase23bydtb?svg=true)](https://ci.appveyor.com/project/joefitzgerald/gometalinter-linter)
+# `gometalinter-linter` [![Build Status](https://travis-ci.org/joefitzgerald/gometalinter-linter.svg)](https://travis-ci.org/joefitzgerald/gometalinter-linter) [![Build status](https://ci.appveyor.com/api/projects/status/u94yqsase23bydtb?svg=true)](https://ci.appveyor.com/project/joefitzgerald/gometalinter-linter)
 
 > **[gometalinter](https://github.com/alecthomas/gometalinter)**
 >
@@ -6,6 +6,7 @@
 
 `gometalinter-linter` is a [Linter](https://atom.io/packages/linter) provider that runs [`gometalinter`](https://github.com/alecthomas/gometalinter) on your file(s). It depends on the following packages, which _**must** be installed for the package to function correctly_:
 
+* [environment](https://atom.io/packages/environment)
 * [`go-config`](https://atom.io/packages/go-config)
 * A consumer of the linter service that this package provides:
   * [`linter`](https://atom.io/packages/linter) (Recommended)
