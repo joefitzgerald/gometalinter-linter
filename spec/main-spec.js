@@ -11,6 +11,10 @@ describe('gometalinter-linter', () => {
         mainModule = pack.mainModule
       })
     })
+
+    waitsFor(() => {
+      return mainModule.getGoconfig() !== false
+    })
   })
 
   describe('when the go-metalinter package is activated', () => {

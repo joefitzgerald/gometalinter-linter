@@ -6,7 +6,7 @@
 
 `gometalinter-linter` is a [Linter](https://atom.io/packages/linter) provider that runs [`gometalinter`](https://github.com/alecthomas/gometalinter) on your file(s). It depends on the following packages, which _**must** be installed for the package to function correctly_:
 
-* [environment](https://atom.io/packages/environment)
+* [`environment`](https://atom.io/packages/environment)
 * [`go-config`](https://atom.io/packages/go-config)
 * A consumer of the linter service that this package provides:
   * [`linter`](https://atom.io/packages/linter) (Recommended)
