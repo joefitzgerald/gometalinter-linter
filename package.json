@@ -37,7 +37,7 @@
     "url": "https://github.com/joefitzgerald/gometalinter-linter/issues"
   },
   "dependencies": {
-    "atom-package-deps": "^3.0.6"
+    "atom-package-deps": "^4.0.1"
   },
   "devDependencies": {
     "eslint": "^1.5.0",
