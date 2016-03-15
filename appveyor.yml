@@ -2,9 +2,20 @@ version: "{build}"
 
 platform: x64
 
+branches:
+  only:
+    - master
+
+skip_tags: true
+
 environment:
   GOPATH: c:\gopath
-  GOVERSION: 1.5.1
+  GOVERSION: 1.6
+  APM_TEST_PACKAGES: environment go-config
+
+  matrix:
+  - ATOM_CHANNEL: stable
+  - ATOM_CHANNEL: beta
 
 install:
   - appveyor DownloadFile https://atom.io/download/windows?channel=beta -FileName AtomSetup.exe
@@ -18,15 +29,10 @@ install:
   - mkdir c:\gopath
   - go get -u github.com/alecthomas/gometalinter
   - gometalinter --install --update
+  - ps: Install-Product node 5
 
 build_script:
-  - cd %APPVEYOR_BUILD_FOLDER%
-  - SET PATH=%LOCALAPPDATA%\atom\bin;%GOPATH%\bin;%PATH%
-  - apm clean
-  - apm install
-  - apm install environment
-  - apm install go-config
-  - atom --test spec
+  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/atom/ci/master/build-package.ps1'))
 
 test: off
 deploy: off
