@@ -18,9 +18,7 @@ environment:
   - ATOM_CHANNEL: beta
 
 install:
-  - appveyor DownloadFile https://atom.io/download/windows?channel=beta -FileName AtomSetup.exe
-  - AtomSetup.exe /silent
-  - set PATH=%LOCALAPPDATA%\atom\bin;%GOPATH%\bin;c:\go\bin;%PATH%
+  - set PATH=%GOPATH%\bin;c:\go\bin;%PATH%
   - rmdir c:\go /s /q
   - appveyor DownloadFile https://storage.googleapis.com/golang/go%GOVERSION%.windows-amd64.zip
   - 7z x go%GOVERSION%.windows-amd64.zip -y -oC:\ > NUL
