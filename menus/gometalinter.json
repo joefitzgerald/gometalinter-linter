@@ -1,0 +1,12 @@
+{
+  "menu": [{
+    "label": "Packages",
+    "submenu": [{
+      "label": "gometalinter",
+      "submenu": [{
+        "label": "Install and Update Tools",
+        "command": "gometalinter:updatetools"
+      }]
+    }]
+  }]
+}

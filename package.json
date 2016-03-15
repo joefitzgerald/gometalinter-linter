@@ -37,22 +37,29 @@
     "url": "https://github.com/joefitzgerald/gometalinter-linter/issues"
   },
   "dependencies": {
-    "atom-package-deps": "^3.0.6"
+    "atom-package-deps": "^4.0.1"
   },
   "devDependencies": {
-    "eslint": "^1.5.0",
-    "babel-eslint": "^4.1.3",
-    "eslint-config-standard": "^4.4.0",
-    "eslint-plugin-standard": "^1.3.1"
+    "eslint": "^2.4.0",
+    "babel-eslint": "^6.0.0-beta.6",
+    "eslint-config-standard": "^5.1.0",
+    "eslint-plugin-standard": "^1.3.2",
+    "eslint-plugin-promise": "^1.1.0"
   },
   "package-deps": [
     "go-config",
+    "go-get",
     "linter"
   ],
   "consumedServices": {
     "go-config": {
       "versions": {
-        "0.1.0": "consumeGoconfig"
+        "1.0.0": "consumeGoconfig"
+      }
+    },
+    "go-get": {
+      "versions": {
+        "1.0.0": "consumeGoget"
       }
     }
   },
@@ -62,5 +69,28 @@
         "1.0.0": "provide"
       }
     }
+  },
+  "configSchema": {
+    "args": {
+      "title": "gometalinter Arguments",
+      "description": "Arguments to be passed when invoking `gometalinter`. Please ensure the `--json` argument is always included. Arguments are comma-separated.",
+      "type": "array",
+      "default": [
+        "--vendor",
+        "--fast",
+        "--json",
+        "./..."
+      ],
+      "items": {
+        "type": "string"
+      },
+      "order": 1
+    }
+  },
+  "standard": {
+    "globals": [
+      "atom",
+      "waitsForPromise"
+    ]
   }
 }

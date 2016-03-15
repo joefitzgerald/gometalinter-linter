@@ -1,4 +1,5 @@
 'use babel'
+/* eslint-env jasmine */
 
 describe('gometalinter-linter', () => {
   let mainModule = null
