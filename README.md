@@ -1,13 +1,13 @@
-# `gometalinter-linter` [![Build Status](https://travis-ci.org/joefitzgerald/gometalinter-linter.svg)](https://travis-ci.org/joefitzgerald/gometalinter-linter) [![Build status](https://ci.appveyor.com/api/projects/status/u94yqsase23bydtb?svg=true)](https://ci.appveyor.com/project/joefitzgerald/gometalinter-linter)
+# `gometalinter-linter` [![Build Status](https://travis-ci.org/joefitzgerald/gometalinter-linter.svg?branch=master)](https://travis-ci.org/joefitzgerald/gometalinter-linter) [![Build status](https://ci.appveyor.com/api/projects/status/u94yqsase23bydtb/branch/master?svg=true)](https://ci.appveyor.com/project/joefitzgerald/gometalinter-linter/branch/master)
 
 > **[gometalinter](https://github.com/alecthomas/gometalinter)**
 >
 > Aggregate and normalise the output of a whole bunch of Go linters.
 
-`gometalinter-linter` is a [Linter](https://atom.io/packages/linter) provider that runs [`gometalinter`](https://github.com/alecthomas/gometalinter) on your file(s). It depends on the following packages, which _**must** be installed for the package to function correctly_:
+`gometalinter-linter` is a [Linter](https://atom.io/packages/linter) provider that runs [`gometalinter`](https://github.com/alecthomas/gometalinter) on your file(s). It depends on the following packages:
 
-* [`environment`](https://atom.io/packages/environment)
 * [`go-config`](https://atom.io/packages/go-config)
+* [`go-get`](https://atom.io/packages/go-get)
 * A consumer of the linter service that this package provides:
   * [`linter`](https://atom.io/packages/linter) (Recommended)
   * [`nuclide-diagnostics`](https://atom.io/packages/nuclide-installer)
