@@ -17,3 +17,38 @@
 Rather than list all the linters that [`gometalinter`](https://github.com/alecthomas/gometalinter) runs here (and let the list get out of date), head over to the [`gometalinter`](https://github.com/alecthomas/gometalinter) repository to find out the current state (it's pretty awesome!):
 
 > https://github.com/alecthomas/gometalinter
+
+## Configuration
+
+[`gometalinter`](https://github.com/alecthomas/gometalinter) has [many flags](https://github.com/alecthomas/gometalinter#details) that can be used for customization. You can use flags to enable or disable specific linters. The `--json` flag will always be added if it is missing. The defaults used for this package are:
+
+#### When Viewed In The Package Settings Dialog
+
+```
+--vendor, --fast, --json, ./...
+```
+
+#### When You Open Your Atom Config File (`config.cson` / `config.json`)
+
+`config.cson`
+```cson
+"gometalinter-linter":
+  args: [
+    "--vendor"
+    "--fast"
+    "--json"
+    "./..."
+  ]
+```
+
+`config.json`
+```json
+"gometalinter-linter": {
+  "args": [
+    "--vendor",
+    "--fast",
+    "--json",
+    "./..."
+  ]
+}
+```
