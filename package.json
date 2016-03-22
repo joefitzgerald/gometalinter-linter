@@ -86,7 +86,7 @@
         "--enable=goconst",
         "--tests",
         "--json",
-        "./..."
+        "."
       ],
       "items": {
         "type": "string"
