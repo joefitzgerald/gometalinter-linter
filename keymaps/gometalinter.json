@@ -1,5 +1,5 @@
 {
   "atom-workspace": {
-    "ctrl-alt-shift-g u": "gometalinter:updatetools"
+    "ctrl-alt-shift-g u": "golang:updatelinters"
   }
 }

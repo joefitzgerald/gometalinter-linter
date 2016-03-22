@@ -2,10 +2,10 @@
   "menu": [{
     "label": "Packages",
     "submenu": [{
-      "label": "gometalinter",
+      "label": "Go",
       "submenu": [{
-        "label": "Install and Update Tools",
-        "command": "gometalinter:updatetools"
+        "label": "Install and Update Linters",
+        "command": "golang:updatelinters"
       }]
     }]
   }]
