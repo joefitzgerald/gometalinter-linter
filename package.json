@@ -77,7 +77,14 @@
       "type": "array",
       "default": [
         "--vendor",
-        "--fast",
+        "--disable-all",
+        "--enable=gotype",
+        "--enable=vet",
+        "--enable=vetshadow",
+        "--enable=golint",
+        "--enable=ineffassign",
+        "--enable=goconst",
+        "--tests",
         "--json",
         "./..."
       ],
