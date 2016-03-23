@@ -24,8 +24,10 @@ Rather than list all the linters that [`gometalinter`](https://github.com/alecth
 
 #### When Viewed In The Package Settings Dialog
 
+This is helpful if you would like to copy-paste the settings in as a starting point for further customization.
+
 ```
---vendor, --fast, --json, ./...
+--vendor, --disable-all, --enable=gotype, --enable=vet, --enable=vetshadow, --enable=golint, --enable=ineffassign, --enable=goconst, --tests, --json, .
 ```
 
 #### When You Open Your Atom Config File (`config.cson` / `config.json`)
@@ -35,9 +37,16 @@ Rather than list all the linters that [`gometalinter`](https://github.com/alecth
 "gometalinter-linter":
   args: [
     "--vendor"
-    "--fast"
+    "--disable-all"
+    "--enable=gotype"
+    "--enable=vet"
+    "--enable=vetshadow"
+    "--enable=golint"
+    "--enable=ineffassign"
+    "--enable=goconst"
+    "--tests"
     "--json"
-    "./..."
+    "."
   ]
 ```
 
@@ -46,9 +55,16 @@ Rather than list all the linters that [`gometalinter`](https://github.com/alecth
 "gometalinter-linter": {
   "args": [
     "--vendor",
-    "--fast",
+    "--disable-all",
+    "--enable=gotype",
+    "--enable=vet",
+    "--enable=vetshadow",
+    "--enable=golint",
+    "--enable=ineffassign",
+    "--enable=goconst",
+    "--tests",
     "--json",
-    "./..."
+    "."
   ]
 }
 ```
