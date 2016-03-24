@@ -78,7 +78,6 @@
       "default": [
         "--vendor",
         "--disable-all",
-        "--enable=gotype",
         "--enable=vet",
         "--enable=vetshadow",
         "--enable=golint",
