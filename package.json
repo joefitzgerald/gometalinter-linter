@@ -25,7 +25,7 @@
     "aligncheck"
   ],
   "main": "./lib/main",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "repository": "https://github.com/joefitzgerald/gometalinter-linter",
   "license": "Apache-2.0",
   "engines": {
