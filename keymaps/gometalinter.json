@@ -1,5 +1,0 @@
-{
-  "atom-workspace": {
-    "ctrl-alt-shift-g u": "golang:updatelinters"
-  }
-}
