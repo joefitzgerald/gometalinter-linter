@@ -40,7 +40,7 @@
     "atom-package-deps": "4.2.0"
   },
   "devDependencies": {
-    "standard": "^8.3.0"
+    "standard": "^8.4.0"
   },
   "package-deps": [
     "go-config",
